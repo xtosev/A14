@@ -1,0 +1,22 @@
+﻿CREATE TABLE Apoteka (
+	ApotekaID INT NOT NULL,
+	Ime VARCHAR(20) NOT NULL,
+	Telefon VARCHAR(20) NOT NULL,
+	Adresa VARCHAR(50) NOT NULL,
+	Grad VARCHAR(20) NOT NULL,
+	Drzava VARCHAR(20) NOT NULL,
+	PRIMARY KEY(ApotekaID)
+);
+ 
+CREATE TABLE Narudzbina (
+	NarudzbinaID INT NOT NULL,
+	ApotekaID INT NOT NULL,
+	LekID INT NOT NULL,
+	Kolicina INT NOT NULL,
+	PRIMARY KEY(NarudzbinaID, ApotekaID, LekID),
+	FOREIGN KEY(ApotekaID) REFERENCES Apoteka(ApotekaID),
+	FOREIGN KEY(LekID) REFERENCES Lek(LekID)
+);
+ 
+ALTER TABLE Pakovanje
+ADD DatumUpotrebe DATE;
